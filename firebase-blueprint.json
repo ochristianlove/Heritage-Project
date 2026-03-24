@@ -1,0 +1,102 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile and role information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "client"] },
+        "advisorId": { "type": "string", "description": "UID of the assigned advisor" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "Portfolio": {
+      "title": "Portfolio",
+      "description": "Financial portfolio overview",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "netWorth": { "type": "number" },
+        "ytdPerformance": { "type": "number" },
+        "availableCash": { "type": "number" },
+        "riskScore": { "type": "string" },
+        "allocation": {
+          "type": "object",
+          "properties": {
+            "equities": { "type": "number" },
+            "fixedIncome": { "type": "number" },
+            "alternatives": { "type": "number" },
+            "cash": { "type": "number" }
+          }
+        },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "netWorth"]
+    },
+    "Transaction": {
+      "title": "Transaction",
+      "description": "Financial transaction record",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "amount": { "type": "number" },
+        "type": { "type": "string", "enum": ["credit", "debit"] },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "amount", "timestamp"]
+    },
+    "Document": {
+      "title": "Document",
+      "description": "Secure document record",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "type": { "type": "string" },
+        "size": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "uploadedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "type", "url"]
+    },
+    "SystemActivity": {
+      "title": "System Activity",
+      "description": "Audit log for admin actions",
+      "type": "object",
+      "properties": {
+        "user": { "type": "string" },
+        "action": { "type": "string" },
+        "target": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "isAlert": { "type": "boolean" }
+      },
+      "required": ["user", "action", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile data"
+    },
+    "/portfolios/{userId}": {
+      "schema": "Portfolio",
+      "description": "Portfolio data for a user"
+    },
+    "/transactions/{userId}/history/{transactionId}": {
+      "schema": "Transaction",
+      "description": "Transaction history for a user"
+    },
+    "/documents/{userId}/vault/{documentId}": {
+      "schema": "Document",
+      "description": "Secure document vault for a user"
+    },
+    "/system/activity/{activityId}": {
+      "schema": "SystemActivity",
+      "description": "Global system activity log"
+    }
+  }
+}

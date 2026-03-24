@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Public+Sans:wght@100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Newsreader", serif;
+  --font-body: "Public Sans", sans-serif;
+  --font-label: "Public Sans", sans-serif;
+
+  --color-on-secondary-container: #5e6936;
+  --color-on-surface-variant: #41474d;
+  --color-surface-bright: #fcf9f8;
+  --color-on-error: #ffffff;
+  --color-surface-container-highest: #e5e2e1;
+  --color-surface-variant: #e5e2e1;
+  --color-background: #fcf9f8;
+  --color-outline: #71787e;
+  --color-secondary-fixed-dim: #bfcd8f;
+  --color-tertiary-fixed-dim: #aacae6;
+  --color-on-secondary: #ffffff;
+  --color-tertiary-container: #587891;
+  --color-on-primary-container: #fcfcff;
+  --color-on-error-container: #93000a;
+  --color-outline-variant: #c1c7ce;
+  --color-primary-fixed: #cae6ff;
+  --color-on-tertiary-fixed: #001e2f;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary: #3f5f78;
+  --color-on-background: #1c1b1b;
+  --color-surface-container-high: #eae7e7;
+  --color-surface-container-low: #f6f3f2;
+  --color-on-primary-fixed: #001e2f;
+  --color-primary-container: #477a9d;
+  --color-error: #ba1a1a;
+  --color-secondary-fixed: #dbe9a9;
+  --color-error-container: #ffdad6;
+  --color-surface-tint: #2f6386;
+  --color-surface: #fcf9f8;
+  --color-on-secondary-fixed: #171e00;
+  --color-surface-container: #f0eded;
+  --color-primary-fixed-dim: #9accf3;
+  --color-tertiary-fixed: #cae6ff;
+  --color-on-primary-fixed-variant: #0e4b6c;
+  --color-inverse-primary: #9accf3;
+  --color-on-secondary-fixed-variant: #404b1b;
+  --color-surface-container-lowest: #ffffff;
+  --inverse-on-surface: #f3f0ef;
+  --color-on-primary: #ffffff;
+  --color-on-tertiary-container: #fcfcff;
+  --color-secondary-container: #dbe9a9;
+  --color-on-tertiary-fixed-variant: #294a61;
+  --color-primary: #2c6183;
+  --color-surface-dim: #dcd9d9;
+  --color-inverse-surface: #313030;
+  --color-secondary: #586331;
+  --color-on-surface: #1c1b1b;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container;
+  }
+}
+
+.silk-gradient {
+  background: linear-gradient(135deg, #2c6183 0%, #477a9d 100%);
+}
